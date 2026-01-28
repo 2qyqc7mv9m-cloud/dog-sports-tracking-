@@ -2,14 +2,68 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Dog Sports Tracking</title>
+
   <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#0b0b0f" />
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-  <h1>Dog Sports Tracking</h1>
-  <p>Track dog sprint times and performance.</p>
+  <header class="app-header">
+    <div class="header-left">
+      <div class="brand">
+        <div class="brand-mark">DST</div>
+        <div>
+          <div class="brand-title">Dog Sports Tracking</div>
+          <div class="brand-subtitle" id="subtitle">Track sprints • PBs • Leaderboard</div>
+        </div>
+      </div>
+    </div>
+    <button class="icon-btn" id="helpBtn" type="button" aria-label="Help">
+      ?
+    </button>
+  </header>
+
+  <main class="container" id="app"></main>
+
+  <nav class="tabbar">
+    <button class="tab" data-tab="dogs" aria-label="Dogs">
+      <span class="tab-ico">🐶</span><span class="tab-txt">Dogs</span>
+    </button>
+    <button class="tab" data-tab="record" aria-label="Record">
+      <span class="tab-ico">⏱️</span><span class="tab-txt">Record</span>
+    </button>
+    <button class="tab" data-tab="leaderboard" aria-label="Leaderboard">
+      <span class="tab-ico">🏁</span><span class="tab-txt">Rank</span>
+    </button>
+    <button class="tab" data-tab="charts" aria-label="Charts">
+      <span class="tab-ico">📈</span><span class="tab-txt">Charts</span>
+    </button>
+    <button class="tab" data-tab="settings" aria-label="Settings">
+      <span class="tab-ico">⚙️</span><span class="tab-txt">Settings</span>
+    </button>
+  </nav>
+
+  <div class="modal-backdrop hidden" id="modalBackdrop" role="dialog" aria-modal="true">
+    <div class="modal">
+      <div class="modal-head">
+        <div class="modal-title" id="modalTitle">Help</div>
+        <button class="icon-btn" id="modalClose" type="button" aria-label="Close">✕</button>
+      </div>
+      <div class="modal-body" id="modalBody"></div>
+      <div class="modal-actions" id="modalActions"></div>
+    </div>
+  </div>
 
   <script src="app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('./sw.js').catch(()=>{});
+    }
+  </script>
 </body>
 </html>
