@@ -1,0 +1,1 @@
+console.log('Dog Sports Tracking app loaded');
